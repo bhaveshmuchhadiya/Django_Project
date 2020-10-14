@@ -1471,6 +1471,7 @@ section#tables  p {
 }
 .form-control {
     border-radius: inherit;
+    width: 50%;
 }
 .help-block {
     margin-top: 10px;
@@ -1500,7 +1501,7 @@ section#tables  p {
   color: #616161;
   background: #fff;
   box-shadow: none !important;
-  width: 100%;
+  width: 30%;
   font-size: 0.85em;
   font-weight: 300;
   height: 40px;

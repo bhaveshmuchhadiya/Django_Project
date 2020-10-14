@@ -5,9 +5,21 @@ def index(request):
     return render(request,"index.html")
 def login(request):
     return render(request, "login.html")
+def change_pass(request):
+    return render(request, "change_pass_employee.html")
+def leave_apply(request):
+    if request.session.has_key('username'):
+        return render(request, "leave_apply.html")
+    else:
+        return render(request, 'login.html')
+def leave_details(request):
+    if request.session.has_key('username'):
+        return render(request, "leave_details.html")
+    else:
+        return render(request, 'login.html')
 def home(request):
     if request.session.has_key('username'):
-        return render(request, 'home.html')
+        return render(request, 'user_home.html')
     else:
         return render(request, 'login.html')
 def process(request):

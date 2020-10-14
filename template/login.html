@@ -1,6 +1,9 @@
 {% extends 'master.html' %}
+{% block info %}  {% endblock %}
 {% block contant %}
 <div id="page-wrapper">
+    <div class="main-page">
+        
     <div class="col_3">
     <div class="main-page login-page ">
         <h2 class="title1">Login</h2>
@@ -8,14 +11,15 @@
             <div class="login-body">
                 <form action="process" method="post">
                     {% csrf_token %}
-                    <input type="email" class="user" name="txt1" placeholder="Enter Your Email" required="">
+                    <input type="text" class="user" name="txt1" placeholder="Enter Your Email" required="">
                     
                      <input type="submit" name="Sign In" value="Sign In">
                     
                 </form>
             </div>
-        </div>
+        
     </div>
     </div>
 </div> 
 {% endblock %}
+{% block footer %}  {% endblock %}
