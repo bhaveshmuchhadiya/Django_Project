@@ -1029,7 +1029,7 @@ ul.list-unstyled li {
 section.pricing-tables h5.card-title {
 	font-size: 2.8em;
 	color: #000;
-	font-weight: 400;
+	font-weight: 600;
 }
 
 /*--// Pricing-2 --*/
@@ -1168,12 +1168,12 @@ a.btn.more {
 	padding: 0.74rem;
 	vertical-align: top;
 	border-top: 1px solid #dee2e6;
-	font-size: 13px;
+	font-size: 16px;
 }
 
 .table th {
 	color: #252525;
-	font-size: 15px;
+	font-size: 17px;
 }
 
 .table-responsive {

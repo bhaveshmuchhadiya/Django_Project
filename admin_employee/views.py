@@ -22,3 +22,5 @@ def pandding_leaves(request):
     return render(request, "admin_pandding_leaves.html")
 def approved_leaves(request):
     return render(request, "admin_approved_leaves.html")
+def not_approved(request):
+    return render(request, "admin_notapproved_leaves.html")

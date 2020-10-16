@@ -14,4 +14,5 @@ urlpatterns = [
     path('all_leaves', views.all_leaves, name="all_leaves"),
     path('pandding_leaves', views.pandding_leaves, name="pandding_leaves"),
     path('approved_leaves', views.approved_leaves, name="approved_leaves"),
+    path('not_approved', views.not_approved, name="not_approved"),
 ]
