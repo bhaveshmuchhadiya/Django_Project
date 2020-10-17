@@ -4,6 +4,8 @@ from django.http import HttpResponse
 
 def index(request):
     return render(request, "admin_index.html")
+def login(request):
+    return render(request, "admin_login.html")
 def add_department(request):
     return render(request, "admin_add_department.html")
 def view_department(request):

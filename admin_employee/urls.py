@@ -15,4 +15,5 @@ urlpatterns = [
     path('pandding_leaves', views.pandding_leaves, name="pandding_leaves"),
     path('approved_leaves', views.approved_leaves, name="approved_leaves"),
     path('not_approved', views.not_approved, name="not_approved"),
+    path('admin/login', views.login, name="login"),
 ]
