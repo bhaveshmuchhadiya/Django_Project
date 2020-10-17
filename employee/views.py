@@ -1,6 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-# Create your views here.
+import mysql.connector as mydb
+
+con = mydb.connect(host="localhost", user="root", password="", database="django_db")
+print("successfully coonected with databse...")
+cur = con.cursor()
+
+
 def index(request):
     return render(request,"index.html")
 def login(request):
@@ -23,7 +29,7 @@ def home(request):
     else:
         return render(request, 'login.html')
 def process(request):
-    user = request.POST['txt1']
+    user = request.POST['txt1'] 
     request.session['username'] = user
     response = redirect(home)
     return response
