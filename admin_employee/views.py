@@ -26,6 +26,7 @@ def insert_department(request):
 def view_department(request):
     sel = cur.execute("select * from department")
     data = cur.fetchall()
+    print(data)
     return render(request,'admin_view_department.html',{'data':data})
 def add_leave(request):
     return render(request, "admin_add_leave.html")
@@ -71,10 +72,16 @@ def view_employee(request):
     data = cur.fetchall()
     return render(request, "admin_view_employee.html",{"data":data})
 def all_leaves(request):
-    return render(request, "admin_all_leaves.html")
+    sel = cur.execute("select * from employee inner join leaves on employee.emp_id=leaves.emp_id")
+    data = cur.fetchall()
+    return render(request, "admin_all_leaves.html",{"data":data})
 def pandding_leaves(request):
     return render(request, "admin_pandding_leaves.html")
 def approved_leaves(request):
-    return render(request, "admin_approved_leaves.html")
+    # sel = cur.execute("select * from leaves where status = 'approved'")
+    # data = cur.fetchall()
+    sel1 = cur.execute("select * from employee inner join leaves on employee.emp_id=leaves.emp_id where leaves.status = 'approved'")
+    data = cur.fetchall()
+    return render(request, "admin_approved_leaves.html",{"data":data})
 def not_approved(request):
     return render(request, "admin_notapproved_leaves.html")

@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('home', views.home, name="home"),
     path('leave_apply', views.leave_apply, name="leave_apply"),
+    path('leave_insert', views.leave_insert, name="leave_insert"),
     path('leave_details', views.leave_details, name="leave_details"),
     # path('home', views.home, name="home"),
     path('login', views.login, name="login"),

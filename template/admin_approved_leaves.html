@@ -17,15 +17,18 @@
                 </tr>
             </thead>
             <tbody>
+                {% for row in data %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>bhavin</td>
-                    <td>medical</td>
-                    <td>14/10/2020</td>
-                    <td>Approved</td>
+                    <th scope="row">{{ row.0 }}</th>
+                    <td>{{ row.1 }}</td>
+                    <td>{{ row.2 }}</td>
+                    <td>{{ row.3 }}</td>
+                    <td>{{ row.4 }}</td>
                     <td><a href="#"><i class="fas fa-edit"></li>Edit</a></td>
                     <td><a href="#"><i class="fas fa-trash"></li>delete</a></td>
+                {% endfor %}
                 </tr>
+            
             </tbody>
         </table>
     </div>

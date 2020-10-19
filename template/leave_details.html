@@ -10,7 +10,6 @@
     <table class="table">
         <thead>
             <tr>
-              <th>ID</th>
               <th>Leave Type</th>
               <th>From date</th>
               <th>To date</th>
@@ -20,16 +19,17 @@
             </tr>
         </thead>
         <tbody>
+            {% for i in data %}
             <tr>
-              <th scope="row">1</th>
-              <td>Casual Leave</td>
-              <td>13/10/2019</td>
-              <td>14/10/2019</td>
-              <td>apply for casual leave</td>
-              <td>11/10/2019</td>
-              <td>Approved</td>
+              <!-- <th scope="row">{{i.0}}</th> -->
+              <td>{{i.1}}</td>
+              <td>{{i.2}}</td>
+              <td>{{i.3}}</td>
+              <td>{{i.4}}</td>
+              <td>{{i.5}}</td>
+              <td>{{i.6}}</td>
             </tr>
-            
+            {% endfor %}
         </tbody>
     </table>
 </div>
