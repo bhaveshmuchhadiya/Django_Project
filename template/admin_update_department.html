@@ -1,0 +1,30 @@
+{% extends 'admin_master.html' %}
+{% block info %}{% endblock %}
+{% block content %}
+
+<h1>Update Department</h1>
+    <nav class="navbar navbar-default mb-xl-5 mb-4">
+        <div class="outer-w3-agile col-xl mt-3">
+        <!-- <h4 class="tittle-w3-agileits mb-4">Department Type</h4> -->
+        {% for row in data %}
+        <form action="../update_department_process" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="d_id" value="{{ row.0 }}" />
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Department name</label>
+                <input type="text" class="form-control" name="dept_name" value="{{ row.2 }}"  placeholder="Department name" required=""> 
+            </div>
+           
+            <center>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary">clear</button>
+                </div>
+            </div></center>
+        </form>  
+        {% endfor %}
+</div>
+    </nav>
+
+{% endblock %}

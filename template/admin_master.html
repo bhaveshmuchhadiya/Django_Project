@@ -144,52 +144,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div id="content">
             <!-- top-bar -->
             {% block info %}
+            
             <div class="outer-w3-agile col-xl">
                 <div class="stat-grid p-3 d-flex align-items-center justify-content-between bg-primary">
                     <div class="s-l">
-                        <h5>Projects</h5>
+                        <h5>Employees</h5>
                         <p class="paragraph-agileits-w3layouts text-white">Lorem Ipsum</p>
                     </div>
                     <div class="s-r">
-                        <h6>340
+                        <h6>{{emp_data}}
                             <i class="far fa-edit"></i>
                         </h6>
                     </div>
                 </div>
                 <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-success">
                     <div class="s-l">
-                        <h5>Clients</h5>
+                        <h5>Department</h5>
                         <p class="paragraph-agileits-w3layouts">Lorem Ipsum</p>
                     </div>
                     <div class="s-r">
-                        <h6>250
+                        <h6>{{d_data}}
                             <i class="far fa-smile"></i>
                         </h6>
                     </div>
                 </div>
                 <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-danger">
                     <div class="s-l">
-                        <h5>Tasks</h5>
+                        <h5>Total Leaves</h5>
                         <p class="paragraph-agileits-w3layouts">Lorem Ipsum</p>
                     </div>
                     <div class="s-r">
-                        <h6>232
+                        <h6>{{t_data}}
                             <i class="fas fa-tasks"></i>
                         </h6>
                     </div>
                 </div>
-                <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-warning">
-                    <div class="s-l">
-                        <h5>Employees</h5>
-                        <p class="paragraph-agileits-w3layouts">Lorem Ipsum</p>
-                    </div>
-                    <div class="s-r">
-                        <h6>190
-                            <i class="fas fa-users"></i>
-                        </h6>
-                    </div>
-                </div>
             </div>
+            
             {% endblock %}
 {% block content %} {% endblock %}            
             
