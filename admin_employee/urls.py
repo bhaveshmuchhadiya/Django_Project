@@ -30,4 +30,6 @@ urlpatterns = [
     path('admin/approved_leaves', views.approved_leaves, name="approved_leaves"),
     path('admin/not_approved', views.not_approved, name="not_approved"),
     path('admin/login', views.login, name="login"),
+    path('admin/login_process', views.login_process, name="login_process"),
+    path('admin/logout', views.logout, name="logout"),
 ]

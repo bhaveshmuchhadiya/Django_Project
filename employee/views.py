@@ -13,8 +13,7 @@ def master(request):
     return data
 
 def index(request):
-    return render(request,"index.html")
-
+   return render(request,"index.html")
 def change_pass(request):
     if request.session.has_key('username'):
         return render(request, "change_pass_employee.html")
@@ -76,15 +75,12 @@ def process(request):
     sel = cur.execute("select * from employee")
     data = cur.fetchall()
     for i in data:
-        for j in i:
-            print(j)
-            if (j == user):
-                continue
-            elif(j == pas):
-                request.session['username'] = user
-                response = redirect(home)
-                return response
-    return redirect(login)            
+        if user and pas == i:
+            request.session['username'] = user
+            response = redirect(home)
+            return response
+        else:
+            return redirect(login)            
 def logout(request):
     del request.session['username']
     response = redirect(login)
