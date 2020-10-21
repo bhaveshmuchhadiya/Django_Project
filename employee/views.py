@@ -82,6 +82,9 @@ def process(request):
             return render(request, "user_home.html")
     return redirect(login)
 def logout(request):
-    del request.session['username']
-    response = redirect(login)
-    return response
+    if request.session.has_key('username'):
+        del request.session['username']
+        response = redirect(login)
+        return response
+    else:
+        return render(request, "login.html")
