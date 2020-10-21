@@ -72,15 +72,15 @@ def login(request):
 def process(request):
     user = request.POST['username'] 
     pas = request.POST['password'] 
-    sel = cur.execute("select * from employee")
+    sel = cur.execute("select mail_id,password from employee")
     data = cur.fetchall()
+    print(data)
     for i in data:
-        if user and pas == i:
+        print(i)
+        if user and pas in i:
             request.session['username'] = user
-            response = redirect(home)
-            return response
-        else:
-            return redirect(login)            
+            return render(request, "user_home.html")
+    return redirect(login)
 def logout(request):
     del request.session['username']
     response = redirect(login)
