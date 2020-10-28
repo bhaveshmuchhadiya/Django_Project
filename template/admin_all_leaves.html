@@ -3,6 +3,7 @@
 {% block content %}
 
     <h1>all leaves</h1>
+    <!-- {{data}} -->
     <div class="outer-w3-agile mt-3">
         <!-- <h4 class="tittle-w3-agileits mb-4">Table Head Options</h4> -->
         <table class="table">
@@ -21,9 +22,10 @@
                     {% for row in data %}
                     <th scope="row">{{ row.0 }}</th>
                     <td>{{ row.1 }}_{{row.2}}_{{row.3}}</td>
-                    <td>{{ row.4 }}</td>
+                    <!-- <td>{{ row.4 }}</td> -->
                     <td>{{ row.5 }}</td>
                     <td>{{ row.6 }}</td>
+                    <td>{{ row.19 }}</td>
                     <td><a href="#"><i class="fas fa-edit"></li>Edit</a></td>
                     <td><a href="#"><i class="fas fa-trash"></li>delete</a></td>
                 </tr>

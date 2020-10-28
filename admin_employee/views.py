@@ -78,7 +78,7 @@ def add_department(request):
         return render(request, "admin_add_department.html")
     else:
         return redirect(login)
-def insert_department(request,id):
+def insert_department(request):
     if request.session.has_key('username'):
         if request.method == 'POST':
             dept_code = request.POST['dept_code']
@@ -87,15 +87,24 @@ def insert_department(request,id):
             cur.execute("insert into department(department_code,department_name,creation_date) values ('{}','{}','{}')".format(dept_code,dept_name,dept_cre_date))
             con.commit()
             return redirect(view_department)
-        else:
-            print(id)
-            sel = cur.execute("select * from department where id='{}'".format(id))
-            data = cur.fetchall()
-            print(data)
-            return render(request, "admin_update_department.html",{"data":data})
+        # else:
+        #     print(id)
+        #     sel = cur.execute("select * from department where id='{}'".format(id))
+        #     data = cur.fetchall()
+        #     print(data)
+        #     return render(request, "admin_update_department.html",{"data":data})
     else:
         return redirect(login)    
-        # return redirect(add_department)
+        
+def get_department(request,id):
+    if request.session.has_key('username'):
+        print(id)
+        sel = cur.execute("select * from department where id='{}'".format(id))
+        data = cur.fetchall()
+        print(data)
+        return render(request, "admin_update_department.html",{"data":data})
+    else:
+        return redirect(login)
 def update_department_process(request):
     if request.session.has_key('username'):
         d_name = request.POST['dept_name']
@@ -125,7 +134,7 @@ def add_leave(request):
         return render(request, "admin_add_leave.html")
     else:
         return redirect(login)
-def insert_leave(request,id):
+def insert_leave(request):
     if request.session.has_key('username'):
         if request.method == 'POST':
             leave_type = request.POST['leave_type']
@@ -134,11 +143,19 @@ def insert_leave(request,id):
             cur.execute("insert into leave_type(leave_type,description,creation_date) values ('{}','{}','{}')".format(leave_type,des,cre_date))
             con.commit()
             return redirect(view_leave_type)
-        else:
-            print(id)
-            cur.execute("select * from leave_type where id = '{}'".format(id))
-            data = cur.fetchall()
-            return render(request,"admin_update_leave_type.html",{"data":data})
+        # else:
+        #     print(id)
+        #     cur.execute("select * from leave_type where id = '{}'".format(id))
+        #     data = cur.fetchall()
+        #     return render(request,"admin_update_leave_type.html",{"data":data})
+    else:
+        return redirect(login)
+def get_leave(request,id):
+    if request.session.has_key('username'):
+        print(id)
+        cur.execute("select * from leave_type where id = '{}'".format(id))
+        data = cur.fetchall()
+        return render(request,"admin_update_leave_type.html",{"data":data})
     else:
         return redirect(login)
 def update_leave(request):
@@ -173,7 +190,7 @@ def add_employee(request):
     else:
         return redirect(login)
 
-def insert_employee(request,id):
+def insert_employee(request):
     if request.session.has_key('username'):
         if request.method == 'POST':
             f_name = request.POST['first_name']
@@ -191,12 +208,21 @@ def insert_employee(request,id):
             cur.execute("insert into employee(first_name,second_name,last_name,gender,department,birth_date,address,city,mail_id,mobile,username,password) values ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(f_name,s_name,l_name,gender,dept,b_date,address,city,email,mno,unm,pas))
             con.commit()
             return redirect(view_employee)
-        else:
-            cur.execute("select * from employee where emp_id = '{}'".format(id))
-            data = cur.fetchall()
-            cur.execute("select * from  department")
-            dept = cur.fetchall()
-            return render(request, "admin_update_employee.html",{"data":data,"dept":dept})
+        # else:
+            # cur.execute("select * from employee where emp_id = '{}'".format(id))
+            # data = cur.fetchall()
+            # cur.execute("select * from  department")
+            # dept = cur.fetchall()
+            # return render(request, "admin_update_employee.html",{"data":data,"dept":dept})
+    else:
+        return redirect(login)
+def get_employee(request,id):
+    if request.session.has_key('username'):
+        cur.execute("select * from employee where emp_id = '{}'".format(id))
+        data = cur.fetchall()
+        cur.execute("select * from  department")
+        dept = cur.fetchall()
+        return render(request, "admin_update_employee.html",{"data":data,"dept":dept})
     else:
         return redirect(login)
 def update_employee(request):

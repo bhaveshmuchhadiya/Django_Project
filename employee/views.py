@@ -77,9 +77,12 @@ def process(request):
     print(data)
     for i in data:
         print(i)
-        if user and pas in i:
-            request.session['username'] = user
-            return render(request, "user_home.html")
+        for j in data:
+            print(j)
+            if (user and pas in j):
+                request.session['username'] = user
+                return render(request, "user_home.html")
+                break
     return redirect(login)
 def logout(request):
     if request.session.has_key('username'):
