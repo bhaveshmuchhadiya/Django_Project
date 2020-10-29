@@ -6,7 +6,6 @@
     
     <h1 class="title1">leave Apply</h1>
         {{user_id}}
-        {{ today }}
 					<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
 						<div class="form-body">
                             <div data-example-id="simple-form-inline"> 
@@ -18,8 +17,6 @@
                                         <select name="l_type" class="form-control1">
                                             {% for type in leave_type %}
                                     <option value="{{ type.1 }}">{{ type.1 }}</option>
-                                    <!-- <option value="Medical Leave">Medical Leave</option>
-                                    <option value="Ristricted Holiday">Ristricted Holiday</option> -->
                                     {% endfor %}
                                 </select>
                             </div></div>

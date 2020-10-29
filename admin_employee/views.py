@@ -46,32 +46,11 @@ def login_process(request):
     # print(data[1])
     for i in data:
         print(i)
-        if user and pas in i:
+        if (user , pas) == i:
             request.session['username'] = user
             return redirect(index)
         else:
             return redirect(login)
-    # for i in data:
-    #     for j in i:
-    #         print(j)
-    #         if (j == user):
-    #             if(j == pas):
-    #                 request.session['username'] = user
-    #                 response = redirect(index)
-    #                 return response
-    #         else:
-    # for i in data:
-    #     # print(i)
-    #     for j in i:
-    #         # print(j)
-    #         if user in j:
-    #             continue
-    #         if pas in j :
-    #             request.session['username'] = user
-    #             response = redirect(index)
-    #             return response
-    #         else:
-    #             return redirect(login) 
     
 def add_department(request):
     if request.session.has_key('username'):
