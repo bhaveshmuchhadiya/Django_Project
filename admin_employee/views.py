@@ -49,8 +49,7 @@ def login_process(request):
         if (user , pas) == i:
             request.session['username'] = user
             return redirect(index)
-        else:
-            return redirect(login)
+    return redirect(login)
     
 def add_department(request):
     if request.session.has_key('username'):
