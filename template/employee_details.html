@@ -1,0 +1,46 @@
+{% extends 'admin_master.html' %}
+{% block info %} {% endblock %}
+{% block content %}
+  
+
+        <!-- <p><h2>details of employee:</h2></p> -->
+        <div class="outer-w3-agile mt-3">
+                <h4 class="tittle-w3-agileits mb-4">employee Detail</h4>
+                <table class="table table-bordered">
+                    
+                    <tbody>
+                        {% for i in data %}
+                        <tr>
+                            <td ><p><b>Employee Name :</b>{{i.1}} {{i.2}} {{i.3}} </p></td>
+                            <td><p><b>gender :</b>{{i.4}}</td>
+                            <td><p><b>Department :</b>{{i.5}}</td>
+                        </tr>
+                        <tr>
+                            <td ><p><b>Birth date :</b>{{i.6}}  </p></td>
+                            <td><p><b>Address :</b>{{i.7}}</td>
+                            <td><p><b>City :</b>{{i.8}}</td>
+                        </tr>
+                        <tr>
+                            <td ><p><b>E-mail ID :</b>{{i.9}}  </p></td>
+                            <td><p><b>Mobile :</b>{{i.10}}</td>
+                            <td rowspan="2">                                
+                                <div class="d-flex justify-content-around mb-5">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><a href="../update_employee/{{i.0}}">Edit</a></button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm"><a href="../delete_employee/{{i.0}}">delete</a></button>
+                                    </div>
+                             </td>
+
+                        </tr>
+                        <tr>
+                            <td ><p><b>User Name:</b>{{i.11}}  </p></td>
+                            <td><p><b>Password :</b>{{i.12}}</td>
+                            
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+
+
+{% endblock %}}

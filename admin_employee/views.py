@@ -1,6 +1,8 @@
-from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.shortcuts import render,redirect
 import mysql.connector as mydb
+import datetime
+import pandas as pd
 # Create your views here.
 
 con = mydb.connect(host="localhost", user="root", password="", database="django_db")
@@ -25,7 +27,7 @@ def index(request):
         t_data = cur.fetchall()
         print()
         t_count = 0
-        for i in d_data:
+        for i in t_data:
             t_count +=1
         # emp_data= data
         return render(request, "admin_index.html",{"emp_data":count,"d_data":d_count,"t_data":t_count})
@@ -235,33 +237,74 @@ def view_employee(request):
         return render(request, "admin_view_employee.html",{"data":data})
     else:
         return redirect(login)
+
+def employee_detail(request,id):
+    if request.session.has_key('username'):
+        cur.execute("select * from employee where emp_id = '{}'".format(id))
+        data = cur.fetchall()
+        return render(request, "employee_details.html",{'data':data})
+    else:
+        return redirect(login)
 def all_leaves(request):
+    # al = request.GET['admin/all_leaves']
     if request.session.has_key('username'):
         sel = cur.execute("select * from employee inner join leaves on employee.emp_id=leaves.emp_id")
         data = cur.fetchall()
+        # print(data)
+        # print(al)
+        # if():
         return render(request, "admin_all_leaves.html",{"data":data})
+    else:
+        return redirect(login)
+def leave_action(request,id):
+    if request.session.has_key('username'):
+        cur.execute("select * from employee inner join leaves on employee.emp_id=leaves.emp_id where employee.emp_id = '{}' and leaves.status='pendding'".format(id))
+        data = cur.fetchall()
+        return render(request, "leave_action.html",{'data':data})
+    else:
+        return redirect(login)
+def action(request):
+    if request.session.has_key('username'):
+        pdate = request.POST['p_date']
+        # dt = date.pdate()
+        # now = datetime.strptime("%b %d %y")
+        # abc = datetime.today().strftime('%y-%m-%d')
+        # print(abc)
+        # print(arrow.now().format('YYYY-MM-DD'))
+        # print(pd.to_datetime(pdate).date())
+        dt = pd.to_datetime(pdate).date()
+        status = request.POST['status']
+        cur.execute("update leaves set status='{}' where from_date = '{}'".format(status,dt))
+        con.commit()
+        return redirect(all_leaves)
     else:
         return redirect(login)
 def pandding_leaves(request):
     if request.session.has_key('username'):
-        return render(request, "admin_pandding_leaves.html")
+        cur.execute("select * from employee inner join leaves on employee.emp_id=leaves.emp_id where leaves.status = 'pendding'")
+        data = cur.fetchall()
+        return render(request, "admin_pandding_leaves.html",{'data':data})
     else:
         return redirect(login)
 def approved_leaves(request): 
     if request.session.has_key('username'): 
         # sel = cur.execute("select * from leaves where status = 'approved'")
         # data = cur.fetchall()
-        sel1 = cur.execute("select * from employee inner join leaves on employee.emp_id=leaves.emp_id where leaves.status = 'approved'")
+        cur.execute("select * from employee inner join leaves on employee.emp_id=leaves.emp_id where leaves.status = 'approved'")
         data = cur.fetchall()
         return render(request, "admin_approved_leaves.html",{"data":data})
     else:
         return redirect(login)
 def not_approved(request):
     if request.session.has_key('username'):
-        return render(request, "admin_notapproved_leaves.html")
+        cur.execute("select * from employee inner join leaves on employee.emp_id=leaves.emp_id where leaves.status = 'disapprove'")
+        data = cur.fetchall()
+        return render(request, "admin_approved_leaves.html",{"data":data})
     else:
         return redirect(login)
 def logout(request):
     del request.session['username']
     response = redirect(login)
     return response
+# def change_password(request):
+#     return render(request, "change_pass_employee.html")

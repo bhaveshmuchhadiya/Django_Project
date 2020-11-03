@@ -27,6 +27,7 @@ def leave_apply(request):
         user_id = user_id[0]
         # print(user_id[0])
         today = date.today()
+        print(today)
         now = today.strftime('%d-%m-%y')
         sel = cur.execute("select * from leave_type")
         leave_type = cur.fetchall()

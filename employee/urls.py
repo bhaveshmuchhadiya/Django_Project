@@ -14,4 +14,4 @@ urlpatterns = [
     path('process', views.process, name="process"),
     path('logout', views.logout, name="logout"),
     path('change_pass', views.change_pass, name="change_pass"),
-]
+]   
