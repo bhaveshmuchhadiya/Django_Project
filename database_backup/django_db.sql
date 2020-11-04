@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2020 at 05:37 PM
+-- Generation Time: Nov 04, 2020 at 05:34 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.21
 
@@ -177,7 +177,8 @@ INSERT INTO `department` (`id`, `department_code`, `department_name`, `creation_
 (1, 'HR0001', 'Human Resource (HR)', '2020-10-01'),
 (2, 'IT0001', 'Information Technology (IT)', '2020-10-01'),
 (3, 'Ac0001', 'account', '2020-10-19'),
-(7, '001', 'xyz', '2020-10-28');
+(7, '001', 'xyz', '2020-10-28'),
+(12, '001', 'abc', '2021-12-03');
 
 -- --------------------------------------------------------
 
@@ -276,7 +277,8 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('mb8y5v42a44rkq7sgkrzq76x56s30tw2', 'eyJ1c2VybmFtZSI6ImFkbWluQGdtYWlsLmNvbSJ9:1kYtpO:z3SbFhmlVbNtopYi63x1Tj9JicQNMGv1qXLRm1gZ-Bg', '2020-11-14 16:34:06.151313');
+('0jpj8f6rr7nhgug2kofusquamg1igc8t', 'eyJ1c2VybmFtZSI6ImJoYXZpbkBnbWFpbC5jb20ifQ:1kZyj7:dOG8XpdtOHWFAxHQJk47e3odATYFcOdAl6I58Eq_GZw', '2020-11-17 16:00:05.496454'),
+('mb8y5v42a44rkq7sgkrzq76x56s30tw2', 'eyJ1c2VybmFtZSI6ImFkbWluQGdtYWlsLmNvbSJ9:1kZd4Y:LmD1JWHLnmsjfPAaX-MGmBvTQ8nbYSECp5DFe9b8KiM', '2020-11-16 16:52:46.758439');
 
 -- --------------------------------------------------------
 
@@ -305,8 +307,8 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`emp_id`, `first_name`, `second_name`, `last_name`, `gender`, `department`, `birth_date`, `address`, `city`, `mail_id`, `mobile`, `username`, `password`) VALUES
-(2, 'bhavin', 'j', 'muchhadiya', 'male', 'Human', '2020-10-20', 'pardi,lodhika,rajkot', 'rajkot', 'bhavin@gmail.com', 7600088774, 'bhavesh', 'Emp123'),
-(3, 'nayan', 'j ', 'chavda', 'male', 'Information', '1998-11-03', 'rajkot,rajkot', 'rajkot', 'nayan@gmail.com', 2147483647, 'nayan', 'Empnayan'),
+(2, 'bhavin', 'j', 'muchhadiya', 'male', 'Human', '1999-06-01', 'pardi,lodhika,rajkot', 'rajkot', 'bhavin@gmail.com', 7600088774, 'bhavesh', 'Emp123'),
+(3, 'nayan', 'j ', 'chavda', 'male', 'Human', '1998-08-03', 'rajkot,rajkot', 'rajkot', 'nayan@gmail.com', 9033812534, 'nayan', 'Empnayan'),
 (4, 'krishna', 'k', 'goswami', 'female', 'Account', '1998-12-06', 'rajkot', 'rajkot', 'krishna@gmail.com', 2147483647, 'krishna', 'Empkrishna'),
 (6, 'abc', 'c', 'xyz', 'female', 'Information', '2020-10-06', 'sdcsdc', 'fdvdfvfdvd', 'abc@gmail.com', 1234567890, 'abc', 'Empabc');
 
@@ -346,11 +348,15 @@ CREATE TABLE `leaves` (
 INSERT INTO `leaves` (`l_id`, `leave_type`, `from_date`, `to_date`, `description`, `posting_date`, `status`, `emp_id`) VALUES
 (1, 'casual leave', '2020-10-01', '2020-10-02', 'need leave for abc work', '2020-09-29', 'approved', 2),
 (2, 'medical leave', '2020-10-07', '2020-10-09', 'need leave for medical work', '2020-09-29', 'approved', 3),
-(4, 'Medical Leave', '2020-10-27', '2020-10-29', '', '2019-10-20', '', 3),
-(5, 'Casual Leave', '2020-10-20', '2020-10-23', 'need leave for casual work.', '2019-10-20', 'not approved', 3),
-(6, 'Restricted_Holiday', '2020-10-20', '2020-10-23', 'restricvted holiday', '2019-10-20', 'not approved', 2),
-(7, 'Medical leave', '2020-10-29', '2020-10-30', 'medical work', '2028-10-20', 'pendding', 6),
-(12, 'Medical leave', '2020-10-30', '2020-10-31', 'testing\r\n', '2029-10-20', 'pendding', 2);
+(5, 'Casual Leave', '2020-10-20', '2020-10-23', 'need leave for casual work.', '2019-10-20', 'disapprove', 3),
+(6, 'Restricted_Holiday', '2020-10-20', '2020-10-23', 'restricvted holiday', '2019-10-20', 'approved', 2),
+(7, 'Medical leave', '2020-10-29', '2020-10-30', 'medical work', '2028-10-20', 'disapprove', 6),
+(12, 'Medical leave', '2020-10-30', '2020-10-31', 'testing\r\n', '2029-10-20', 'approved', 2),
+(13, 'Medical leave', '2020-11-03', '2020-11-06', 'apply leave for medical work.', '2002-11-20', 'disapprove', 4),
+(14, 'Casual Leave', '2020-11-05', '2020-11-07', 'testing', '2002-11-20', 'disapprove', 4),
+(15, 'Casual Leave', '2020-11-03', '2020-11-04', 'testing', '2002-11-20', 'disapprove', 2),
+(16, 'Casual Leave', '2020-11-03', '2020-11-06', 'sdfsd', '2002-11-20', 'disapprove', 2),
+(17, 'Medical leave', '2020-11-04', '2020-11-05', 'test', '2003-11-20', 'pendding', 2);
 
 -- --------------------------------------------------------
 
@@ -537,7 +543,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `django_admin_log`
@@ -573,7 +579,7 @@ ALTER TABLE `employee_department`
 -- AUTO_INCREMENT for table `leaves`
 --
 ALTER TABLE `leaves`
-  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `leave_type`
