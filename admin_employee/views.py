@@ -225,6 +225,7 @@ def update_employee(request):
         return redirect(login)
 def delete_employee(request,id):
     if request.session.has_key('username'):
+        cur.execute("delete from leaves where emp_id= '{}'".format(id))
         cur.execute("delete from employee where emp_id= '{}'".format(id))
         con.commit()
         return redirect(view_employee)

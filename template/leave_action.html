@@ -31,7 +31,7 @@
                                 <div class="d-flex justify-content-around mb-5">
                                         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><a href="action/{{i.0}}"></a>Approve</a></button> -->
                                     
-                                                         <form action="../action" method="post">
+                                        <form action="../action" method="post">
                                             {% csrf_token %}
                                             <input type="hidden" name="p_date" value="{{i.15}}">
                                             <input type="hidden" name="status" value="approved">
