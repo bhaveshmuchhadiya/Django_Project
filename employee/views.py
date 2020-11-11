@@ -92,3 +92,25 @@ def logout(request):
         return response
     else:
         return render(request, "login.html")
+
+def forgot_password(request):
+    if request.session.has_key('username'):
+        old_pas = request.POST['old_password']
+        # print(old_pas)
+        new_pas = request.POST['new_password']
+        con_pas = request.POST['con_password']
+        user = request.session['username']
+        cur.execute("select password from employee where emp_id = (select emp_id from employee where mail_id = '{}') ".format(user))
+        user_data = cur.fetchone()
+        # print(user_data)
+        # print(old_pas)
+        if(user_data[0] == old_pas):
+            print(user_data[0])
+            if(new_pas == con_pas):
+                cur.execute("update employee set password = '{}' where emp_id =(select emp_id from employee where mail_id = '{}') ".format(con_pas,user))
+                con.commit()
+                return redirect(home)
+        else:
+            return render(request, "change_pass_employee.html")
+    else:
+        return redirect(login)
