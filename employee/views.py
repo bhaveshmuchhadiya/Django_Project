@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 import mysql.connector as mydb
 from datetime import date
+# from tkinter import *
+# from tkinter import messagebox 
+from pymsgbox import *
 
 con = mydb.connect(host="localhost", user="root", password="", database="django_db")
 print("successfully coonected with databse...")
@@ -111,6 +114,12 @@ def forgot_password(request):
                 con.commit()
                 return redirect(home)
         else:
-            return render(request, "change_pass_employee.html")
+            # # top = Tk()  
+            # # top.geometry("100x100")  
+            # messagebox.showerror("password","Wrong Password")         
+  
+            # # top.mainloop()  
+            alert(text='Wrong Password', title='Wrong Password', button='OK')
+            return redirect(home)
     else:
         return redirect(login)
